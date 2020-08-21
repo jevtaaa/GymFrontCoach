@@ -1,0 +1,46 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Editing a coach!</mat-card-title>
+    </mat-card-header>
+    <div class="spinner-div" *ngIf="session.bottomSheetSpinnerFlag">
+      <mat-spinner></mat-spinner>
+    </div>
+    <mat-card-content *ngIf="!session.bottomSheetSpinnerFlag">
+      <form [formGroup]="editCoachForm">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="Username" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="string" formControlName="Name" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Surname</mat-label>
+            <input matInput type="string" formControlName="Surname" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="Email" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Biography</mat-label>
+            <input matInput formControlName="Biography" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="Password" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" [disabled]="!editCoachForm.valid" (click)="editCoach()">
+        <mat-icon>save</mat-icon>
+        Save
+      </button>
+      <button mat-button color="warn" (click)="close()">
+        <mat-icon>not_interested</mat-icon>
+        Quit
+      </button>
+    </mat-card-actions>
+  </mat-card>

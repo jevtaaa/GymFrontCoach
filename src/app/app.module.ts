@@ -16,13 +16,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
+import { CoachComponent } from './coach/coach.component';
+import { CoachEditComponent } from './coach/coach-edit/coach-edit.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    HomeComponent
+    HomeComponent,
+    CoachComponent,
+    CoachEditComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatBottomSheetModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -32,8 +32,11 @@ export class AuthComponent implements OnInit {
         return;
       }
       this.authServ.isAuth = true;
-      this.authServ.token = 'Bearer' + data.token;
+      this.authServ.token = 'Bearer ' + data.token;
       const coach = plainToClass(Coach, data);
+      if(coach.getBio().trim().length == 0 || coach.getBio() === null || coach.getBio() === undefined){
+        coach.setBio("No biography");
+      }
       this.authServ.loggedCoach = coach;
       this.session.loginSpinnerFlag = false;
       console.log("ULOGOVAN");
