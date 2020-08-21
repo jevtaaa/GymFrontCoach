@@ -1,1 +1,78 @@
-<h1>RADIM</h1>
+<div id="container" style="min-height: 100vh; margin: 0;">
+    <mat-toolbar color="primary" style="position: sticky; top: 0; z-index: 1;">
+      <button mat-icon-button (click)="toggleSideMenu()" *ngIf="authServ.isAuth">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="!authServ.isAuth">
+        <mat-icon>circle</mat-icon>
+      </button>
+      <span> Gym Coach</span>
+      <span style="flex: 1 1 auto;"></span>
+      <button mat-button (click)="authServ.logOut()" *ngIf="authServ.isAuth">
+        <mat-icon>logout</mat-icon>
+        Log Out
+      </button>
+    </mat-toolbar>
+  
+    <mat-sidenav-container color="primary" style="z-index: 0;">
+      <mat-sidenav position="start" [(opened)]="menuOpened" mode="push">
+        <hr />
+        <button
+          [routerLink]=""
+          routerLinkActive="router-link-active"
+          (click)="toggleSideMenu()"
+          mat-button
+          color="primary"
+        >
+          Home
+        </button>
+        <button
+          [routerLink]=""
+          routerLinkActive="router-link-active"
+          (click)="toggleSideMenu()"
+          mat-button
+          color="primary"
+        >
+          Clients
+        </button>
+        <button
+          [routerLink]=""
+          routerLinkActive="router-link-active"
+          (click)="toggleSideMenu()"
+          mat-button
+          color="primary"
+        >
+          Trainings
+        </button>
+        <button
+          [routerLink]=""
+          routerLinkActive="router-link-active"
+          (click)="toggleSideMenu()"
+          mat-button
+          color="primary"
+        >
+          Exercises
+        </button>
+        <button
+          [routerLink]=""
+          routerLinkActive="router-link-active"
+          (click)="toggleSideMenu()"
+          mat-button
+          color="primary"
+        >
+          My profile
+        </button>
+        <hr />
+      </mat-sidenav>
+      <mat-sidenav-content
+        style="
+          overflow: hidden;
+          min-height: 90vh;
+          background-color: #ffffcc
+        "
+      >
+        <hr />
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
