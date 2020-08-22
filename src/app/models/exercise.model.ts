@@ -1,5 +1,5 @@
 export class Exercise {
-    constructor(private exercise_id: number, private name: string, private description: string, private reps?: number, private effort?: string) {}
+    constructor(private exercise_id: number, private name: string, private description: string, private repetitions?: number, private effort?: string) {}
 
     getId() {
         return this.exercise_id;
@@ -11,7 +11,7 @@ export class Exercise {
         return this.description;
     }
     getReps() {
-        return this.reps;
+        return this.repetitions;
     }
     getEffort() {
         return this.effort;
@@ -27,8 +27,8 @@ export class Exercise {
     setDescription(description: string) {
         this.description = description;
     }
-    setReps(reps: number) {
-        this.reps = reps;
+    setReps(repetitions: number) {
+        this.repetitions = repetitions;
     }
     setEffort(effort: string) {
         this.effort = effort;

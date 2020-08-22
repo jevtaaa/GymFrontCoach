@@ -5,6 +5,8 @@ import { SessionService } from '../session.service';
 import { Exercise } from '../models/exercise.model';
 import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
+import { TrainingService } from '../training/training.service';
+import { Training } from '../models/training.model';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ import { plainToClass } from 'class-transformer';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authServ: AuthService, public exerciseService: ExerciseService, public session: SessionService) { }
+  constructor(public authServ: AuthService, public exerciseService: ExerciseService, public session: SessionService, public trainingService: TrainingService) { }
 
   ngOnInit(): void {
     console.log("USAO");
@@ -27,11 +29,25 @@ export class HomeComponent implements OnInit {
           exerciseList.push(exercise);
         }
       }
-      this.session.homeSpinnerFlag = false;
       return exerciseList;
     })))
     .subscribe(response => {
       this.exerciseService.exercises = response;
+      this.trainingService.getAllTrainings()
+      .pipe(map((responseData1 => {
+        const trainingList: Training[] = [];
+        for(const key in responseData1){
+        if(responseData1.hasOwnProperty(key)) {
+          const training = plainToClass(Training, responseData1[key]);
+          trainingList.push(training);
+        }
+      }
+      return trainingList;
+      })))
+      .subscribe(response1 => {
+        this.session.homeSpinnerFlag = false;
+        this.trainingService.trainings = response1;
+      })
     })
   }
 

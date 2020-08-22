@@ -19,8 +19,8 @@ export class AuthComponent implements OnInit {
 
   initForm() {
     this.authForm = new FormGroup({
-      userName: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      userName: new FormControl('jevta', [Validators.required]),
+      password: new FormControl('jevta', [Validators.required]),
     });
   }
 
@@ -40,7 +40,6 @@ export class AuthComponent implements OnInit {
       this.authServ.loggedCoach = coach;
       this.session.loginSpinnerFlag = false;
       console.log("ULOGOVAN");
-      //this.session.firstLog();
       this.router.navigateByUrl('/home');
     }, (err) => {
       if(err.status === 404) {
