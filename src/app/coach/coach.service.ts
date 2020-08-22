@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Coach } from '../models/coach.model';
 import { SessionService } from '../session.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';

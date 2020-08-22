@@ -14,11 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
 import { CoachComponent } from './coach/coach.component';
 import { CoachEditComponent } from './coach/coach-edit/coach-edit.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { ExerciseDefaultComponent } from './exercise/exercise-default/exercise-default.component';
+import { ExerciseItemComponent } from './exercise/exercise-item/exercise-item.component';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     AuthComponent,
     HomeComponent,
     CoachComponent,
-    CoachEditComponent
+    CoachEditComponent,
+    ExerciseDefaultComponent,
+    ExerciseItemComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatCardModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

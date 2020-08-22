@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { ExerciseService } from './exercise/exercise.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ export class AppComponent {
   menuOpened = false;
   title = 'gymAdmin';
 
-  constructor(public authServ: AuthService){}
+  constructor(
+    public authServ: AuthService
+    ) {}
 
   toggleSideMenu() {
     this.menuOpened = !this.menuOpened;

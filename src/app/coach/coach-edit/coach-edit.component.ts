@@ -22,7 +22,8 @@ export class CoachEditComponent implements OnInit {
     public bottomSheetRef: MatBottomSheetRef<CoachEditComponent>, 
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     public coachService: CoachService,
-    public authServ: AuthService) {
+    public authServ: AuthService,
+    ) {
       this.session.editBottomSheetRef = this.bottomSheetRef;
    }
 
@@ -76,9 +77,9 @@ export class CoachEditComponent implements OnInit {
       }
       this.session.editBottomSheetRef.dismiss();
     }, (err) => {
+      console.log(err.error.msg);
       this.session.bottomSheetSpinnerFlag = false;
       this.session.editBottomSheetRef.dismiss();
-      console.log(err);
     })
 
   }

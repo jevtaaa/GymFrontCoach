@@ -11,7 +11,6 @@ export class AuthService {
     isAuth = false;
     loggedCoach: Coach;
     token: string;
-
     constructor(private http: HttpClient, private router: Router, private session: SessionService) {
 
     }

@@ -1,0 +1,8 @@
+<div class="spinner-div" *ngIf="session.exercisesSpinnerFlag">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="columns is-multiline" *ngIf="!session.exercisesSpinnerFlag">
+    <div class="column is-4" *ngFor="let ex of exercises">
+      <app-exercise-item [exercise]="ex"></app-exercise-item>
+    </div>
+</div>
