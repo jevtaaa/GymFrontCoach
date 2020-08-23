@@ -33,6 +33,7 @@ import { ClientDefaultComponent } from './client/client-default/client-default.c
 import { ClientItemComponent } from './client/client-item/client-item.component';
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ClientHistoryComponent } from './client/client-history/client-history.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {MatSelectModule} from '@angular/material/select';
     TrainingExerciseComponent,
     ClientDefaultComponent,
     ClientItemComponent,
-    ClientDetailComponent
+    ClientDetailComponent,
+    ClientHistoryComponent
   ],
   imports: [
     BrowserModule,

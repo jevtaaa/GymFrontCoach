@@ -4,9 +4,10 @@
       <mat-card-subtitle
         >{{ exercise.getDescription() }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content *ngIf="exercise.getReps()!=undefined && exercise.getEffort()!=undefined">
+    <mat-card-content *ngIf="exercise.getReps()!=undefined && exercise.getSeries()!=undefined">
         <h1 style="color: orange;">    
-        Repetitions: {{ exercise.getReps() }}  <br>
-        Effort: {{ exercise.getEffort() }}</h1>
+        Series: {{ exercise.getSeries() }}<br>
+        Repetitions: {{ exercise.getReps() }}  
+        </h1>
     </mat-card-content>
 </mat-card>
