@@ -6,6 +6,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { CoachComponent } from './coach/coach.component';
 import { ExerciseDefaultComponent } from './exercise/exercise-default/exercise-default.component';
 import { TrainingDefaultComponent } from './training/training-default/training-default.component';
+import { ClientDefaultComponent } from './client/client-default/client-default.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: CoachComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'clients',
+    component: ClientDefaultComponent,
     canActivate: [AuthGuard],
   },
   {

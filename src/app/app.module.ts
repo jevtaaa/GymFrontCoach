@@ -29,7 +29,10 @@ import { TrainingNewComponent } from './training/training-new/training-new.compo
 import { TrainingDeleteComponent } from './training/training-delete/training-delete.component';
 import { TrainingExerciseComponent } from './training/training-exercise/training-exercise.component';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { ClientDefaultComponent } from './client/client-default/client-default.component';
+import { ClientItemComponent } from './client/client-item/client-item.component';
+import { ClientDetailComponent } from './client/client-detail/client-detail.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { MatDividerModule } from '@angular/material/divider';
     TrainingItemComponent,
     TrainingNewComponent,
     TrainingDeleteComponent,
-    TrainingExerciseComponent
+    TrainingExerciseComponent,
+    ClientDefaultComponent,
+    ClientItemComponent,
+    ClientDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatProgressSpinnerModule,
     MatBottomSheetModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

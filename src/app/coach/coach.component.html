@@ -2,19 +2,36 @@
     <div class="column is-6">
         <mat-card>
             <mat-card-header>
-              <mat-card-title>{{ authServ.loggedCoach.getUsername().trim() }}'s, profile</mat-card-title>
+              <mat-card-title> Profile of: {{ authServ.loggedCoach.getUsername().trim() }}</mat-card-title>
             </mat-card-header>
+            <mat-divider></mat-divider>
             <mat-card-content>
-                <mat-card-subtitle>
-
-                </mat-card-subtitle>
-                <mat-card>
-                <p>Username: {{ authServ.loggedCoach.getUsername().trim() }}</p>
-                <p>Name: {{ authServ.loggedCoach.getName().trim() }}</p>
-                <p>Surname: {{ authServ.loggedCoach.getSurname().trim() }}</p>
-                <p>E-mail: {{ authServ.loggedCoach.getEmail().trim() }}</p>
-                <p>Biography: {{ authServ.loggedCoach.getBio().trim() }}</p>
-            </mat-card>
+              <div style = "padding-left: 5%; padding-top: 5%;">
+                <div style = "padding-right: 5%;">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput value="{{ authServ.loggedCoach.getName().trim() }}"  [disabled]="true">
+                </mat-form-field>
+                </div>
+                <div style = "padding-right: 5%;">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Surname</mat-label>
+                    <input matInput value="{{ authServ.loggedCoach.getSurname().trim() }}"  [disabled]="true">
+                </mat-form-field>
+                </div>
+                <div style = "padding-right: 5%;">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput value="{{ authServ.loggedCoach.getEmail().trim() }}"  [disabled]="true">
+                  </mat-form-field>
+                </div>
+                <div style = "padding-right: 5%;">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Biography</mat-label>
+                    <input matInput value="{{ authServ.loggedCoach.getBio().trim() }}"  [disabled]="true">
+                </mat-form-field>
+                </div>
+                </div>
             </mat-card-content>
             <button
             mat-button

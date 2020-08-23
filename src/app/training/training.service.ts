@@ -25,6 +25,18 @@ export class TrainingService {
         return this.http.get(this.session.ngrok+'/trainings', httpOptions);
     }
 
+    getSingleTraining(id: number) {
+      if(this.authServ.token === undefined || this.authServ.token === null){
+          this.router.navigateByUrl('/login');
+        }
+        const httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: this.authServ.token,
+          })
+      };
+      return this.http.get(this.session.ngrok+'/trainings/single/'+id, httpOptions);
+    }
+
     getTrainingDetails(id: number) {
         if(this.authServ.token === undefined || this.authServ.token === null){
             this.router.navigateByUrl('/login');
@@ -56,6 +68,10 @@ export class TrainingService {
 
     getTrainings() {
         return this.trainings;
+    }
+
+    getTrainingById(id: number) {
+      return this.trainings.find(x => x.getId() === id);
     }
     
 }

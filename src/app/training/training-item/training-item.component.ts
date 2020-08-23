@@ -25,7 +25,7 @@ export class TrainingItemComponent implements OnInit {
 
   openDeleteDialog() {
     const dialogRef = this.dialog.open(TrainingDeleteComponent, {
-      width: '550px',
+      width: '525px',
       data: { training: this.training },
     });
 

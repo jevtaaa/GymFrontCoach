@@ -1,0 +1,85 @@
+<mat-dialog-content>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Details for: {{ client.getUsername().trim() }}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div style = "padding-left: 5%; padding-top: 5%;">
+        <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput value="{{ client.getName().trim() }}"  [disabled]="true">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Surname</mat-label>
+            <input matInput value="{{ client.getSurname().trim() }}"  [disabled]="true">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput value="{{ client.getEmail().trim() }}"  [disabled]="true">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Height</mat-label>
+            <input matInput value="{{ client.getHeight() }} cm"  [disabled]="true">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Weigth</mat-label>
+            <input matInput value="{{ client.getWeight() }} kg"  [disabled]="true">
+        </mat-form-field>
+        <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Biography</mat-label>
+                <input matInput value="{{ client.getBio().trim() }}"  [disabled]="true">
+            </mat-form-field>
+        </div>
+          
+        </div>
+          <mat-card *ngIf="client.getTraining()!= null;">
+              <mat-card-header>
+                <mat-card-title>Training: {{ client.getTraining().getName().trim() }}</mat-card-title>
+                <mat-card-subtitle>
+                    
+                    <mat-divider></mat-divider>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                  <div style = "padding-left: 1%; padding-top: 5%;">
+                    {{client.getTraining().getDescription().trim()}}
+                  </div>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button color="warn" (click)="removeTraining()">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+          </mat-card>
+          <mat-card *ngIf="client.getTraining()== null;">
+            <mat-card-header>
+              <mat-card-title>Choose training here</mat-card-title>
+              <mat-card-subtitle>
+                  
+                  <mat-divider></mat-divider>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div style="padding-top: 5%; padding-right: 5%;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Select training</mat-label>
+                    <mat-select [(value)]="training_id" style="width:80%;">
+                      <mat-option>None</mat-option>
+                      <mat-option value="{{training.getId()}}" *ngFor="let training of trainingService.getTrainings()">{{training.getName()}}</mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary" [disabled] = "training_id==undefined" (click)="addTraining()">
+                <mat-icon>add</mat-icon>
+                Add
+              </button>
+            </mat-card-actions>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+</mat-dialog-content>

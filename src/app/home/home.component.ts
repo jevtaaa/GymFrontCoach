@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { TrainingService } from '../training/training.service';
 import { Training } from '../models/training.model';
+import { ClientService } from '../client/client.service';
+import { Client } from '../models/client.model';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,13 @@ import { Training } from '../models/training.model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authServ: AuthService, public exerciseService: ExerciseService, public session: SessionService, public trainingService: TrainingService) { }
+  constructor(
+    public authServ: AuthService, 
+    public exerciseService: ExerciseService, 
+    public session: SessionService, 
+    public trainingService: TrainingService, 
+    public clientService: ClientService
+    ) { }
 
   ngOnInit(): void {
     console.log("USAO");
@@ -34,19 +42,41 @@ export class HomeComponent implements OnInit {
     .subscribe(response => {
       this.exerciseService.exercises = response;
       this.trainingService.getAllTrainings()
-      .pipe(map((responseData1 => {
+      .pipe(map((trainings => {
         const trainingList: Training[] = [];
-        for(const key in responseData1){
-        if(responseData1.hasOwnProperty(key)) {
-          const training = plainToClass(Training, responseData1[key]);
+        for(const key in trainings){
+        if(trainings.hasOwnProperty(key)) {
+          const training = plainToClass(Training, trainings[key]);
           trainingList.push(training);
         }
       }
       return trainingList;
       })))
       .subscribe(response1 => {
-        this.session.homeSpinnerFlag = false;
         this.trainingService.trainings = response1;
+        this.clientService.getAllClients()
+      .pipe(map((clients => {
+        const clientList: Client[] = [];
+        for(const key in clients){
+        if(clients.hasOwnProperty(key)) {
+          const client = plainToClass(Client, clients[key]);
+          if(clients[key].training_id){
+            client.setTraining(this.trainingService.getTrainingById(clients[key].training_id));
+          }else {
+            client.setTraining(null);
+          }
+          if(!clients[key].bio){
+            client.setBio("No biography!");
+          }
+          clientList.push(client);
+        }
+      }
+      return clientList;
+      })))
+      .subscribe(response2 => {
+        this.session.homeSpinnerFlag = false;
+        this.clientService.clients = response2;
+      })
       })
     })
   }
