@@ -76,6 +76,7 @@ export class CoachEditComponent implements OnInit {
         this.authServ.loggedCoach.setBio("No biography");
       }
       this.session.editBottomSheetRef.dismiss();
+      this.session.successSnackBar("Successfully saved!");
     }, (err) => {
       console.log(err.error.msg);
       this.session.bottomSheetSpinnerFlag = false;

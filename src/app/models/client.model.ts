@@ -1,8 +1,9 @@
 import { Training } from '../models/training.model';
+import { History } from './history.model';
 
 export class Client {
     constructor(private client_id: number, private username: string,private name: string, private surname: string, 
-        private email: string, private bio: string, private height: number, private weight: number, private training?: Training) {}
+        private email: string, private bio: string, private height: number, private weight: number, private training?: Training, public history: History[] = null) {}
 
     getId() {
         return this.client_id;

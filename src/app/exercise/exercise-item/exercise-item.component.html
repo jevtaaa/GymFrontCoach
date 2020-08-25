@@ -10,4 +10,9 @@
         Repetitions: {{ exercise.getReps() }}  
         </h1>
     </mat-card-content>
+    <mat-card-actions *ngIf="isExerciseRoute()">
+        <button mat-button color="warn" (click)="openDeleteDialog()">
+          <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
 </mat-card>

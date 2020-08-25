@@ -1,7 +1,7 @@
 import { Exercise } from '../models/exercise.model';
 
 export class Training {
-    constructor(private training_id: number, private name: string, private description: string, private date: Date, private exercises?: Exercise[]) {}
+    constructor(private training_id: number, private name?: string, private description?: string, private date?: Date, private exercises?: Exercise[]) {}
 
     getId() {
         return this.training_id;

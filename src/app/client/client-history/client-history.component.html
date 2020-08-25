@@ -1,1 +1,19 @@
-<p>client-history works!</p>
+<mat-dialog-content>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h1>History of: [{{ client.getUsername().trim()}}]</h1></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="columns is-multiline" *ngIf="!session.historySpinnerFlag && history.length!=0">
+            <div class="column is-12" *ngFor="let hist of history">
+              <app-client-history-item [history]="hist"></app-client-history-item>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+        <div *ngIf="!session.historySpinnerFlag && history.length==0">
+          <h1 style="color: orange;">History is empty</h1>
+        </div>
+      </mat-card-content>
+      
+    </mat-card>
+</mat-dialog-content>

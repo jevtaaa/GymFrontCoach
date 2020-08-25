@@ -59,6 +59,17 @@ export class ClientService {
         return this.http.put(this.session.ngrok+'/clients/update-client-training', httpBody, httpOptions);
     }
 
+    getHistory(id: number) {
+        if(this.authServ.token === undefined || this.authServ.token === null){
+            this.router.navigateByUrl('/login');
+        }
+        const httpOptions = {
+            headers: new HttpHeaders({
+            Authorization: this.authServ.token,
+        })};
+        return this.http.get(this.session.ngrok+'/history/client-history/'+ id, httpOptions);
+    }
+
     getClients() {
         return this.clients;
     }

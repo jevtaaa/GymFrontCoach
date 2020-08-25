@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Adding new exercise!</mat-card-title>
+    </mat-card-header>
+    <div class="spinner-div" *ngIf="session.dialogSpinnerFlag">
+      <mat-spinner></mat-spinner>
+    </div>
+    <mat-card-content *ngIf="!session.dialogSpinnerFlag">
+      <form [formGroup]="addExerciseForm" id="addExercise">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="fullName" />
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        color="primary"
+        (click)="saveExercise()"
+        [disabled]="!addExerciseForm.valid"
+      >
+        <mat-icon>save</mat-icon>
+        Save
+      </button>
+      <button mat-button color="warn" (click)="close()">
+        <mat-icon>not_interested</mat-icon>
+        Quit
+      </button>
+    </mat-card-actions>
+  </mat-card>

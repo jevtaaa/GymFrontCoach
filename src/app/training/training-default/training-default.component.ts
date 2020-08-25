@@ -53,5 +53,4 @@ export class TrainingDefaultComponent implements OnInit {
           })
     })
   }
-
 }

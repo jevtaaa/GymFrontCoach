@@ -6,7 +6,10 @@
     </mat-card-header>
     
     <mat-card-content>
-        <p style="padding-left: 1em;">
+        <p style="padding-left: 1em;" *ngIf="client.getBio()!='No biography!'">
+          Biography: {{ client.getBio().trim().substring(0, 55) + '...' }}
+        </p>
+        <p style="padding-left: 1em;" *ngIf="client.getBio()=='No biography!'">
           Biography: {{ client.getBio().trim() }}
         </p>
     </mat-card-content>

@@ -9,6 +9,7 @@ import { TrainingService } from '../training/training.service';
 import { Training } from '../models/training.model';
 import { ClientService } from '../client/client.service';
 import { Client } from '../models/client.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-home',
@@ -61,7 +62,11 @@ export class HomeComponent implements OnInit {
         if(clients.hasOwnProperty(key)) {
           const client = plainToClass(Client, clients[key]);
           if(clients[key].training_id){
-            client.setTraining(this.trainingService.getTrainingById(clients[key].training_id));
+            this.trainingService.getSingleTraining(clients[key].training_id)
+            .subscribe(res => {
+              const training = plainToClass(Training, res);
+              client.setTraining(training);
+            })
           }else {
             client.setTraining(null);
           }

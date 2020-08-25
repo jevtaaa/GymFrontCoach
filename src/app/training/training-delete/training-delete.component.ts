@@ -29,6 +29,7 @@ export class TrainingDeleteComponent implements OnInit {
       this.trainService.removeTraining(this.data.training.getId());
       this.session.dialogSpinnerFlag = false;
       this.session.deleteDialogRef.close();
+      this.session.successSnackBar("Training has been deleted!");
     }, (err) => {
         console.log(err.msg);
       });
