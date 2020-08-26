@@ -29,6 +29,7 @@ export class ClientDefaultComponent implements OnInit {
   ngOnInit(): void {
     this.session.clientsSpinnerFlag = true;
     this.clients.forEach(client => {
+      if(client.getTraining()!=null){
       this.trainingService.getTrainingDetails(client.getTraining().getId())
           .pipe(map((response1 => {
             const exerciseTraining: Exercise[] = [];
@@ -42,9 +43,10 @@ export class ClientDefaultComponent implements OnInit {
           }))).subscribe(response2 => {
             
             client.getTraining().setExercises(response2);
-            
-            this.clientService.getHistory(client.getId())
-      .pipe(map((his => {
+          })}
+          
+          this.clientService.getHistory(client.getId())
+          .pipe(map((his => {
         
         const historyList: History[] = [];
         for(const key in his){
@@ -84,7 +86,8 @@ export class ClientDefaultComponent implements OnInit {
           })
         })
       })
-    })
+    
+  
     })
   }
 

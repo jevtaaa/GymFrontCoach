@@ -33,7 +33,7 @@ export class SessionService {
     deleteExerciseRef: MatDialogRef<ExerciseDeleteComponent>;
     newTrainingDialogRef: MatDialogRef<TrainingNewComponent>;
 
-    ngrok: string = 'https://6a9e29721346.ngrok.io';
+    ngrok: string = 'https://601cbba787ce.ngrok.io';
 
     constructor(public snackBar: MatSnackBar) {}
 
