@@ -1,12 +1,14 @@
-<div class="spinner-div" *ngIf="session.trainingsSpinnerFlag">
+<div class="spinner-div" *ngIf="session.trainingsSpinnerFlag && trainings.length != 0">
     <mat-spinner></mat-spinner>
   </div>
-  <div class="columns is-multiline" *ngIf="!session.trainingsSpinnerFlag">
+  <div class="columns is-multiline" *ngIf="!session.trainingsSpinnerFlag && trainings.length != 0">
     <div class="column is-4" *ngFor="let training of trainings">
       <app-training-item [training]="training"></app-training-item>
     </div>
   </div>
-  
+  <div class="column is-12" style="display: flex; flex-direction: column; align-items: center;" *ngIf="trainings.length == 0">
+    <h1 style="color: orange;">No available trainings!</h1>
+  </div>
   <button mat-fab color="primary" id="addButton" (click)="openDialog()">
     <mat-icon>add</mat-icon>
 </button>

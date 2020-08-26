@@ -1,9 +1,12 @@
-<div class="spinner-div" *ngIf="session.clientsSpinnerFlag">
+<div class="spinner-div" *ngIf="session.clientsSpinnerFlag && clients.length != 0">
     <mat-spinner></mat-spinner>
   </div>
-  <div class="columns is-multiline" *ngIf="!session.clientsSpinnerFlag">
+  <div class="columns is-multiline" *ngIf="!session.clientsSpinnerFlag && clients.length != 0">
     <div class="column is-4" *ngFor="let cl of clients">
       <app-client-item [client]="cl"></app-client-item>
     </div>
+</div>
+<div class="column is-12" style="display: flex; flex-direction: column; align-items: center;" *ngIf="clients.length == 0">
+  <h1 style="color: orange;">No available clients!</h1>
 </div>
   

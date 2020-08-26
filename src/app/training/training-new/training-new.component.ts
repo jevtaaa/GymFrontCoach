@@ -47,10 +47,8 @@ export class TrainingNewComponent implements OnInit {
     console.log(this.exercise_id);
     console.log(this.exerciseService.getExerciseList());
     let ex = this.exerciseService.getExerciseList().find(x => x.getId() == this.exercise_id);
-    console.log(ex);
-    ex.setReps(this.addTrainingForm.controls.repetitions.value);
-    ex.setSeries(this.addTrainingForm.controls.series.value);
-    this.exercises.push(ex);
+    let exercise = new Exercise(this.exercise_id, ex.getName(), ex.getDescription(), this.addTrainingForm.controls.repetitions.value, this.addTrainingForm.controls.series.value);
+    this.exercises.push(exercise);
     this.addTrainingForm.controls['series'].reset();
     this.addTrainingForm.controls['repetitions'].reset();
   }
