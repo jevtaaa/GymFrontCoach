@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { SessionService } from '../session.service';
+import { Exercise } from '../models/exercise.model';
 @Injectable({
     providedIn: 'root',
 })
@@ -59,6 +60,24 @@ export class TrainingService {
             })
         };
         return this.http.delete(this.session.ngrok+'/trainings/delete/'+id, httpOptions);
+    }
+
+    saveTraining(name: string, description: string, exercises: Exercise[]) {
+      if(this.authServ.token === undefined || this.authServ.token === null){
+        this.router.navigateByUrl('/login');
+      }
+      const httpOptions = {
+        headers: new HttpHeaders({
+          Authorization: this.authServ.token,
+        })
+      };
+      const httpBody = {
+        "name": name,
+        "description": description,
+        "exercises": exercises
+      };
+      
+      return this.http.put(this.session.ngrok+'/trainings/save',httpBody, httpOptions);
     }
 
     removeTraining(id: number) {

@@ -29,7 +29,7 @@ export class ExerciseNewComponent implements OnInit {
   initForm() {
     this.addExerciseForm = new FormGroup({
       fullName: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(255)]),
     });
   }
 

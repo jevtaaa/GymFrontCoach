@@ -9,6 +9,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ClientHistoryComponent } from './client/client-history/client-history.component';
 import { ExerciseNewComponent } from './exercise/exercise-new/exercise-new.component';
 import { ExerciseDeleteComponent } from './exercise/exercise-delete/exercise-delete.component';
+import { TrainingNewComponent } from './training/training-new/training-new.component';
 
 @Injectable({
     providedIn: 'root',
@@ -30,8 +31,9 @@ export class SessionService {
     clientHistoryDialogRef: MatDialogRef<ClientHistoryComponent>;
     newDialogRef: MatDialogRef<ExerciseNewComponent>;
     deleteExerciseRef: MatDialogRef<ExerciseDeleteComponent>;
+    newTrainingDialogRef: MatDialogRef<TrainingNewComponent>;
 
-    ngrok: string = 'https://c9eb2b267c2a.ngrok.io';
+    ngrok: string = 'https://c36ca7cde5ee.ngrok.io';
 
     constructor(public snackBar: MatSnackBar) {}
 

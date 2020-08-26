@@ -34,10 +34,6 @@ export class TrainingItemComponent implements OnInit {
     });
   }
 
-  openUpdateDialog() {
-    
-  }
-
   openExerciseDialog() {
     const dialogRef = this.dialog.open(TrainingExerciseComponent, {
       width: '1000px',

@@ -35,4 +35,8 @@ export class ExerciseDeleteComponent implements OnInit {
       });
   }
 
+  close() {
+    this.session.deleteExerciseRef.close();
+  }
+
 }

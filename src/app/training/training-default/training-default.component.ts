@@ -5,6 +5,8 @@ import { Training } from 'src/app/models/training.model';
 import { map } from 'rxjs/operators';
 import { Exercise } from 'src/app/models/exercise.model';
 import { plainToClass } from 'class-transformer';
+import { MatDialog } from '@angular/material/dialog';
+import { TrainingNewComponent } from '../training-new/training-new.component';
 
 @Component({
   selector: 'app-training-default',
@@ -17,21 +19,21 @@ export class TrainingDefaultComponent implements OnInit {
 
   constructor(
     public session: SessionService,
-    public trainingService: TrainingService
+    public trainingService: TrainingService,
+    public dialog: MatDialog
   ) { 
     this.trainings = this.trainingService.getTrainings();
   }
 
   openDialog() {
-    /*const dialogRef = this.dialog.open(PlayerNewComponent, {
-      width: '500px',
+    const dialogRef = this.dialog.open(TrainingNewComponent, {
+      width: '800px',
     });
 
-    this.subs.push(
-      dialogRef.afterClosed().subscribe((result) => {
-        console.log(result);
-      })
-    );*/
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    })
+   
   }
 
   ngOnInit(): void {

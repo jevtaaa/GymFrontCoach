@@ -8,9 +8,6 @@
       <button mat-button color="primary" [disabled]="training.getExercises() == undefined || training.getExercises().length == 0" (click)="openExerciseDialog()">
         Exercises ({{training.getLengthExercises()}})
       </button>
-      <button mat-button color="accent" (click)="openUpdateDialog()">
-        <mat-icon>edit</mat-icon>
-      </button>
       <button mat-button color="warn" (click)="openDeleteDialog()">
         <mat-icon>delete</mat-icon>
       </button>

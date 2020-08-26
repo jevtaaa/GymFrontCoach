@@ -42,7 +42,7 @@ export class CoachEditComponent implements OnInit {
         Validators.required,
       ]),
       Biography: new FormControl(this.data.contract.getBio().trim(), [
-        
+        Validators.maxLength(255)
       ]),
       Password: new FormControl(this.data.contract.getPassword().trim(), [
         Validators.required,
